@@ -69,6 +69,22 @@ class PettyCash(models.Model):
         string="Journal Entry",
         readonly=True
     )
+    can_edit = fields.Boolean(compute="_compute_can_edit")
+
+    attachment_ids = fields.Many2many(
+        'ir.attachment',
+        'petty_cash_attachment_rel',
+        'petty_cash_id',
+        'attachment_id',
+        string='Attachments'
+    )
+
+    def _compute_can_edit(self):
+        for rec in self:
+            rec.can_edit = (
+                rec.state == 'draft'
+                and rec.user_id == self.env.user
+            )
 
     # ------- COMPUTE TOTALS --------
     @api.depends('line_ids.amount_before_vat', 'line_ids.vat_amount', 'line_ids.amount_total')
@@ -90,7 +106,10 @@ class PettyCash(models.Model):
                 raise UserError("Only drafts can be submitted.")
             rec.state = 'submitted'
             rec.message_post(body="Petty Cash Report submitted for approval.")
-            if not self.env.user.has_group('petty_cash_management.group_petty_cash_user'):
+            if not (
+                self.env.user.has_group('petty_cash_management.group_petty_cash_user')
+                or self.env.user.has_group('petty_cash_management.group_portal_petty_cash_user')
+            ):
                 raise UserError("You do not have permission to submit petty cash reports.")
 
     def action_approve(self):
@@ -253,23 +272,21 @@ class PettyCash(models.Model):
 
 
     @api.model
-    def default_get(self, fields):
-        res = super().default_get(fields)
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
 
-        params = self.env['ir.config_parameter'].sudo()
+        user = self.env.user
+        config = self.env['petty.cash.user.config'].search([
+            ('partner_id', '=', user.partner_id.id),
+            ('company_id', '=', self.env.company.id),
+        ], limit=1)
 
-        petty_account = params.get_param('petty_cash_management.petty_cash_account_id')
-        vat_account = params.get_param('petty_cash_management.input_vat_account_id')
-        journal = params.get_param('petty_cash_management.petty_cash_journal_id')
-
-        if petty_account:
-            res['petty_cash_account_id'] = int(petty_account)
-
-        if vat_account:
-            res['input_vat_account_id'] = int(vat_account)
-
-        if journal:
-            res['journal_id'] = int(journal)
+        if config:
+            res.update({
+                'petty_cash_account_id': config.petty_cash_account_id.id,
+                'input_vat_account_id': config.input_vat_account_id.id,
+                'journal_id': config.petty_cash_journal_id.id,
+            })
 
         return res
     #reference
