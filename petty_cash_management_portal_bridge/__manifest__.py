@@ -1,1 +1,28 @@
-{'name': 'Petty Cash Management - Employee Portal Bridge', 'version': '18.0.1.1.0', 'summary': 'Exposes Petty Cash Management inside the Employee Portal Suite portal.', 'description': '\nIntegration bridge between Petty Cash Management and Employee Portal Suite.\n\nNeither of those two modules requires the other to install or work. Install this\nbridge module in addition to both if you want employees to submit/view petty\ncash reports from the Employee Portal (/my/employee/petty-cash) rather than\nonly the backend.\n    ', 'category': 'Accounting', 'author': 'Kinan', 'license': 'OPL-1', 'application': False, 'installable': True, 'auto_install': True, 'depends': ['petty_cash_management', 'employee_portal_suite', 'portal', 'website'], 'data': ['views/layout_extension.xml', 'views/portal_petty_cash_templates.xml']}
+{
+    'name': 'Petty Cash Management - Employee Portal Bridge',
+    'version': '18.0.1.1.0',
+    'summary': 'Connects Petty Cash Management with Employee Portal Suite.',
+    'description': """
+Technical integration bridge between Petty Cash Management and Employee Portal Suite.
+
+The two main applications remain independent. When both are available, this bridge
+installs automatically and lets authorized employees submit and view petty cash reports
+from the Employee Portal.
+    """,
+    'category': 'Accounting',
+    'author': 'Kinan',
+    'license': 'OPL-1',
+    'application': False,
+    'installable': True,
+    'auto_install': True,
+    'depends': [
+        'petty_cash_management',
+        'employee_portal_suite',
+        'portal',
+        'website',
+    ],
+    'data': [
+        'views/layout_extension.xml',
+        'views/portal_petty_cash_templates.xml',
+    ],
+}

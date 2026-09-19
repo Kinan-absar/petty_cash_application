@@ -35,8 +35,7 @@
 
         This module is fully standalone (backend only). If you also use Employee
         Portal Suite and want employees to submit/view petty cash reports from the
-        employee portal, install the separate "Petty Cash Management - Employee
-        Portal Bridge" module as well.
+        employee portal, the included portal bridge activates automatically when both modules are available.
         """,
     'depends': ['base', 'account', 'mail', 'web'],
     'data': [
