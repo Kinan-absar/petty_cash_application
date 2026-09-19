@@ -16,7 +16,7 @@ from the Employee Portal.
     'installable': True,
     'auto_install': True,
     'depends': [
-        'petty_cash_management',
+        'petty_cash_application',
         'employee_portal_suite',
         'portal',
         'website',
