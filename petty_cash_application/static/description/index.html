@@ -1,31 +1,81 @@
-<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<style>
-  .app-wrap{max-width:1100px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;color:#252a34;line-height:1.65}
-  .hero{padding:52px 32px;border-radius:18px;background:linear-gradient(135deg,#f5f2f7,#eef5f6);text-align:center;margin:20px 0 30px}
-  .hero h1{font-size:40px;margin:0 0 12px;color:#3b2943}.hero p{font-size:19px;max-width:820px;margin:0 auto;color:#52606d}
-  .badges{margin-top:20px}.badge{display:inline-block;margin:4px;padding:7px 12px;border-radius:20px;background:#714b67;color:#fff;font-size:13px;font-weight:700}
-  .section{padding:26px 8px}.section h2{text-align:center;font-size:29px;color:#3b2943;margin:0 0 18px}.lead{text-align:center;max-width:850px;margin:0 auto 26px;color:#56606b}
-  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid #e5e7eb;border-radius:14px;padding:20px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.05)}
-  .card h3{font-size:18px;margin:0 0 8px;color:#714b67}.card p{margin:0;color:#4b5563}.shot{margin:22px auto;text-align:center}.shot img{max-width:100%;border:1px solid #ddd;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.08)}
-  .flow{padding:22px;border-radius:14px;background:#f8fafc;text-align:center;font-weight:700;color:#3b2943;margin:16px 0}.note{padding:18px 20px;border-left:4px solid #714b67;background:#faf7fb;border-radius:8px;margin:18px 0}
-  .footer{text-align:center;padding:30px 10px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:30px}
-  @media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:31px}.hero{padding:34px 18px}}
-</style>
-</head><body><div class='app-wrap'>
-<div class='hero'><h1>Petty Cash Management</h1><p>Structured petty cash reporting with approvals, VAT handling, attachments, Excel import and draft journal-entry generation.</p><div class='badges'><span class='badge'>Accounting</span><span class='badge'>Approvals</span><span class='badge'>VAT</span><span class='badge'>Attachments</span><span class='badge'>Excel Import</span></div></div>
-<section class='section'><h2>Control Petty Cash from Submission to Accounting</h2><p class='lead'>Create numbered petty cash reports, capture detailed expense lines and supporting documents, approve them, and generate accounting entries with configurable expense, VAT and petty cash accounts.</p><div class='grid'>
-<div class='card'><h3>Multi-line Expense Reports</h3><p>Record category, description, references and amounts for multiple petty cash transactions under one controlled report.</p></div>
-<div class='card'><h3>VAT per Line</h3><p>Optional VAT handling calculates the tax amount while keeping untaxed, VAT and total figures visible.</p></div>
-<div class='card'><h3>Category Account Mapping</h3><p>Map petty cash categories to the appropriate expense accounts for consistent posting.</p></div>
-<div class='card'><h3>Attachments</h3><p>Attach receipts and supporting documents to petty cash lines and carry the supporting evidence into the accounting process.</p></div>
-<div class='card'><h3>Approval Workflow</h3><p>Users submit reports for accountant review, with approve/reject controls and reset-to-draft support where permitted.</p></div>
-<div class='card'><h3>Draft Journal Entries</h3><p>Generate accounting entries using the configured petty cash account, VAT account and journal with controlled debit/credit logic.</p></div>
-<div class='card'><h3>Excel Import Wizard</h3><p>Bulk-import petty cash lines using the included spreadsheet import workflow and template.</p></div>
-<div class='card'><h3>PDF & Chatter</h3><p>Print professional petty cash reports and use chatter tracking for comments and audit visibility.</p></div>
-</div></section>
-<div class='shot'><img src='petty_cash_form.png' alt='Petty Cash Report Form'></div>
-<div class='shot'><img src='petty_cash_categories.png' alt='Petty Cash Categories'></div>
-<div class='shot'><img src='report.png' alt='Petty Cash PDF Report'></div>
-<section class='section'><h2>Optional Employee Portal Integration</h2><p class='lead'>The app is fully usable in the backend. If Employee Portal Suite is installed too, the included auto-install bridge can add employee petty cash submission and viewing to the portal automatically.</p></section>
-<div class='footer'>Odoo 18 • Commercial OPL-1 License • Developed by Kinan</div>
-</div></body></html>
+<section class="container py-4">
+  <div class="text-center bg-light border rounded p-5 mb-5">
+    <h1 class="font-weight-bold mb-3" style="color:#3b2943;">Petty Cash Management</h1>
+    <p class="lead text-muted mx-auto mb-4">Structured petty cash reporting with approvals, VAT handling, attachments, Excel import and draft journal-entry generation.</p>
+    <div>
+      <span class="badge badge-pill px-3 py-2 m-1" style="background-color:#714b67;color:#ffffff;">Accounting</span>
+      <span class="badge badge-pill px-3 py-2 m-1" style="background-color:#714b67;color:#ffffff;">Approvals</span>
+      <span class="badge badge-pill px-3 py-2 m-1" style="background-color:#714b67;color:#ffffff;">VAT</span>
+      <span class="badge badge-pill px-3 py-2 m-1" style="background-color:#714b67;color:#ffffff;">Attachments</span>
+      <span class="badge badge-pill px-3 py-2 m-1" style="background-color:#714b67;color:#ffffff;">Excel Import</span>
+    </div>
+  </div>
+  <div class="mb-5">
+    <h2 class="text-center font-weight-bold mb-3" style="color:#3b2943;">Control Petty Cash from Submission to Accounting</h2>
+    <p class="text-center text-muted mb-4">Create numbered petty cash reports, capture detailed expense lines and supporting documents, approve them, and generate accounting entries with configurable expense, VAT and petty cash accounts.</p>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Multi-line Expense Reports</h3>
+          <p class="text-muted mb-0">Record category, description, references and amounts for multiple petty cash transactions under one controlled report.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">VAT per Line</h3>
+          <p class="text-muted mb-0">Optional VAT handling calculates the tax amount while keeping untaxed, VAT and total figures visible.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Category Account Mapping</h3>
+          <p class="text-muted mb-0">Map petty cash categories to the appropriate expense accounts for consistent posting.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Attachments</h3>
+          <p class="text-muted mb-0">Attach receipts and supporting documents to petty cash lines and carry the supporting evidence into the accounting process.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Approval Workflow</h3>
+          <p class="text-muted mb-0">Users submit reports for accountant review, with approve/reject controls and reset-to-draft support where permitted.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Draft Journal Entries</h3>
+          <p class="text-muted mb-0">Generate accounting entries using the configured petty cash account, VAT account and journal with controlled debit/credit logic.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">Excel Import Wizard</h3>
+          <p class="text-muted mb-0">Bulk-import petty cash lines using the included spreadsheet import workflow and template.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="h-100 border rounded p-4 bg-white">
+          <h3 class="h5 font-weight-bold mb-2" style="color:#714b67;">PDF &amp; Chatter</h3>
+          <p class="text-muted mb-0">Print professional petty cash reports and use chatter tracking for comments and audit visibility.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center my-4">
+      <img class="img-fluid border rounded" src="petty_cash_form.png" alt="Petty Cash Report Form">
+    </div>
+    <div class="text-center my-4">
+      <img class="img-fluid border rounded" src="petty_cash_categories.png" alt="Petty Cash Categories">
+    </div>
+    <div class="text-center my-4">
+      <img class="img-fluid border rounded" src="report.png" alt="Petty Cash PDF Report">
+    </div>
+  </div>
+  <div class="mb-5">
+    <h2 class="text-center font-weight-bold mb-3" style="color:#3b2943;">Optional Employee Portal Integration</h2>
+    <p class="text-center text-muted mb-4">The app is fully usable in the backend. If Employee Portal Suite is installed too, the included auto-install bridge can add employee petty cash submission and viewing to the portal automatically.</p>
+  </div>
+  <div class="text-center text-muted border-top pt-4 mt-5">Odoo 18 • Commercial OPL-1 License • Developed by Kinan</div>
+</section>
