@@ -3,22 +3,23 @@ from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal
 import base64
 from odoo import fields
+from markupsafe import Markup
 
 def _petty_status_badge(rec):
 
     if rec.state == "approved":
-        return '<span class="badge bg-success">Approved</span>'
+        return Markup('<span class="badge bg-success">Approved</span>')
 
     if rec.state == "refused":
-        return '<span class="badge bg-danger">Rejected</span>'
+        return Markup('<span class="badge bg-danger">Rejected</span>')
 
     if rec.state == "submitted":
-        return '<span class="badge bg-warning text-dark">Submitted</span>'
+        return Markup('<span class="badge bg-warning text-dark">Submitted</span>')
 
     if rec.state == "draft":
-        return '<span class="badge bg-light text-dark border">Draft</span>'
+        return Markup('<span class="badge bg-light text-dark border">Draft</span>')
 
-    return '<span class="badge bg-secondary">Unknown</span>'
+    return Markup('<span class="badge bg-secondary">Unknown</span>')
 
 class PortalPettyCash(CustomerPortal):
 
@@ -33,7 +34,7 @@ class PortalPettyCash(CustomerPortal):
         ])
 
         return request.render(
-            'petty_cash_management.portal_petty_cash_list',
+            'petty_cash_management_portal_bridge.portal_petty_cash_list',
             {
                 'reports': reports,
                 'page_name': 'petty_cash',
@@ -55,7 +56,7 @@ class PortalPettyCash(CustomerPortal):
         categories = request.env['petty.cash.category'].sudo().search([])
 
         return request.render(
-            'petty_cash_management.portal_petty_cash_detail',
+            'petty_cash_management_portal_bridge.portal_petty_cash_detail',
             {
                 'report': report,
                 'categories': categories,   # 🔥 THIS WAS MISSING
